@@ -5,7 +5,11 @@ function weatherSearch(){
     })
     .then(function(data) {
         //call display info
-      console.log(data)
+     var searchText = document.getElementById("search-button")
+     searchText.addEventListener("click", data)
+      console.log(searchText)
+      //document.getElementById("card").innerText = searchText
+
     });
 // get the city form the search box and take the data from the api and put it on the page
 // put weather on the page
@@ -14,6 +18,7 @@ function weatherSearch(){
 
 function displayInfo(){
     // displaying weather info after search
+    
 }
 
 var searched = document.getElementById("search-button");
