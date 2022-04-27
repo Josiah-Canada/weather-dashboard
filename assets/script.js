@@ -1,17 +1,12 @@
-function weatherSearch(){
-    fetch ("https://api.openweathermap.org/data/2.5/weather?q=Miami&appid=eb75c7c4e7622ead3f14c1ae67623f07")
+function weatherSearch(city){
+    fetch ("https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=eb75c7c4e7622ead3f14c1ae67623f07")
     .then(function(response) {
       return response.json();
     })
     .then(data => {
-      console.log(data);
       displayInfo(data)
     })
         //call display info
-    //  var searchText = document.getElementById("search-button")
-    //  searchText.addEventListener("click", data)
-    //   console.log(searchText)
-    
       
 
     };
@@ -20,12 +15,25 @@ function weatherSearch(){
 
 
 
-function displayInfo(){
+function displayInfo(data) {
+   console.log(data);
     // displaying weather info after search
-    const temp = data.temp[0];
-    const tempP = document.getElementById("temp")
+    //var temperature = document.getElementById("temp")
+    const temp = data.main.temp;
+    const tempDiv = document.getElementById("temp").textContent = temp
+    const humidity = data.main.humidity;
+    const humidityDiv = document.getElementById("humidity").textContent = humidity
+    const wind = data.wind.speed;
+    const windSpeedDiv = document.getElementById("windSpeed").textContent = wind
+    
     
 }
 
-var searched = document.getElementById("search-button");
-searched.addEventListener("click", weatherSearch);
+var searchButton = document.getElementById("search-button");
+searchButton.addEventListener("click", function(){
+  var cityName = document.getElementById("city-input").value;
+  console.log(cityName)
+  weatherSearch(cityName);
+  //get whatever was typed
+
+});
