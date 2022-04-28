@@ -7,13 +7,26 @@ function weatherSearch(city){
       displayInfo(data) 
     })
         //call display info
-      
-
     };
 // get the city form the search box and take the data from the api and put it on the page
 // put weather on the page
+function weatherForecast(){
+  fetch ("https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&exclude=daily&appid=eb75c7c4e7622ead3f14c1ae67623f07")
+  .then(function(response) {
+    return response.json();
+  })
+  .then(data => {
+    displayDaily(data)
+  })
+};
+function displayDaily(data){
+  console.log(data);
 
+  const weather = daily.weather.description;
+  const forecastH2 = document.getElementById("forecast").textContent = weather
+  console.log(weather);
 
+};
 
 function displayInfo(data) {
    console.log(data);
@@ -25,7 +38,10 @@ function displayInfo(data) {
     const humidityDiv = document.getElementById("humidity").textContent = humidity
     const wind = data.wind.speed;
     const windSpeedDiv = document.getElementById("windSpeed").textContent = wind
-    
+    // const uvi = data.current.uvi;
+    // const uviDiv = document.getElementById("uvi").textContent = uvi
+    const lon = data.coord.lon;
+    const lat = data.coord.lat;
     
 }
 
