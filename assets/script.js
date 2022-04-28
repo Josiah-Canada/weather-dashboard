@@ -4,7 +4,7 @@ function weatherSearch(city){
       return response.json();
     })
     .then(data => {
-      displayInfo(data)
+      displayInfo(data) 
     })
         //call display info
       
@@ -37,3 +37,5 @@ searchButton.addEventListener("click", function(){
   //get whatever was typed
 
 });
+
+
